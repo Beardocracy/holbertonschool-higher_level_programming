@@ -1,5 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * is_palindrome - checks a list to see if it is a palindrome
@@ -8,25 +9,28 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *temp1, *temp2;
-	int start, len, i, end;
+	listint_t *temp_right, *temp_head, *temp_right_saved;
+	int i;
 
-	if (*head == NULL || (*head)->next == NULL)
-		return (1);
-	if (loop_exists(head))
-		return (0);
-	len = list_length(head);
-	temp1 = *head;
-	len -= 1;
-	for (start = 0, end = len; start <= end; start++, len -= 2, end--)
+	temp_right = *head;
+	temp_head = *head;
+	for (i = 0; i < list_length(temp_head) / 2; i++)
 	{
-		temp2 = temp1;
-		for (i = 0; i < len; i++)
-			temp2 = temp2->next;
-		if (temp1->n != temp2->n)
-			return (0);
-		temp1 = temp1->next;
+		temp_right = temp_right->next;
 	}
+	temp_right = reverse_list(temp_right);
+	temp_right_saved = temp_right;
+	while (temp_head != NULL && temp_right != NULL)
+	{
+		if (temp_head->n != temp_right->n)
+		{
+			revert_append(*head, temp_right);
+			return (0);
+		}
+		temp_head = temp_head->next;
+		temp_right = temp_right->next;
+	}
+	revert_append(*head, temp_right_saved);
 	return (1);
 }
 
@@ -35,38 +39,48 @@ int is_palindrome(listint_t **head)
  * @head: pointer to the head of the list.
  * Return: the number of nodes in the list.
  */
-int list_length(listint_t **head)
+int list_length(listint_t *head)
 {
-	listint_t *temp = *head;
 	int count = 0;
 
-	while (temp != NULL)
+	while (head != NULL)
 	{
 		count++;
-		temp = temp->next;
+		head = head->next;
 	}
 	return (count);
 }
 
-/**
- * loop_exists - checks a listint_t list for a loop
- * @head: pointer to the first node.
- * Return: 1 if loop exists, 0 if not.
+/** 
+ * revert_append - reverse a list and appends or attaches it to another
+ * @head: pointer to the left piece
+ * @tail: pointer to the right piece, which will be reversed.
  */
-int loop_exists(listint_t **head)
+void revert_append(listint_t *head, listint_t *tail)
 {
-	listint_t *hare = *head;
-	listint_t *tort = *head;
-	
-	while (hare != NULL)
+	int i;
+
+	for (i = 0; i < list_length(head); i++)
+		head = head->next;
+	tail = reverse_list(tail);
+	head->next = tail;
+}
+
+/**
+ * reverse_list - reverses a linked list
+ * @head: the head of the list
+ * Return: the new head
+ */
+listint_t *reverse_list(listint_t *head)
+{
+	listint_t *temp = NULL, *tail;
+
+	while (head != NULL)
 	{
-		tort = tort->next;
-		hare = hare->next;
-		if (hare == NULL)
-			return (0);
-		hare = hare->next;
-		if (hare == tort)
-			return (1);
+		tail = head->next;
+		head->next = temp;
+		temp = head;
+		head = tail;
 	}
-	return (0);
+	return (temp);
 }
