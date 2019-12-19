@@ -10,29 +10,30 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *temp_right, *temp_head, *temp_right_saved;
-	int i;
+	int i, len;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 	temp_right = *head;
 	temp_head = *head;
-	for (i = 0; i < list_length(temp_head) / 2; i++)
+	len = list_length(temp_head) / 2 - 1;
+	for (i = 0; i < len; i++)
 	{
 		temp_right = temp_right->next;
 	}
-	temp_right = reverse_list(temp_right);
+	temp_right = reverse_list(temp_right->next);
 	temp_right_saved = temp_right;
 	while (temp_head != NULL && temp_right != NULL)
 	{
 		if (temp_head->n != temp_right->n)
 		{
-			revert_append(*head, temp_right);
+			reverse_list(temp_right_saved);
 			return (0);
 		}
 		temp_head = temp_head->next;
 		temp_right = temp_right->next;
 	}
-	revert_append(*head, temp_right_saved);
+	reverse_list(temp_right_saved);
 	return (1);
 }
 
