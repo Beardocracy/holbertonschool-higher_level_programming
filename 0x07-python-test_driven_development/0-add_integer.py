@@ -3,6 +3,7 @@
 This module contains an addition function (test-proven).
 '''
 
+
 def add_integer(a, b=98):
     """ Adds two numbers
     If a float is passed, it will be cast to an int
