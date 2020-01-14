@@ -1,0 +1,75 @@
+The ''2-matrix_divided'' module
+============================
+
+Using ''matrix_divided''
+----------------------------
+
+Import the module:
+
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+Initialize a matrix (list of lists, all ints)
+	>>> m1 = [[1, 2, 3], [4, 5, 6]]
+
+Check for correct output
+	>>> matrix_divided(m1, 3)
+	[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+Check for dividing by zero
+	>>> matrix_divided(m1, 0)
+	Traceback (most recent call last):
+			...
+	ZeroDivisionError: division by zero
+
+Check for div not an int or float
+	>>> matrix_divided(m1, "Im no int")
+	Traceback (most recent call last):
+			...
+	TypeError: div must be a number
+
+Check if matrix is a list:
+	>>> matrix_divided(98, 5)
+	Traceback (most recent call last):
+			...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+	>>> matrix_divided((5, 4, 3), 98)
+	Traceback (most recent call last):
+			...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Check if all matrix lists are the same length:
+	>>> m2 = [[1, 2, 3], [4, 5, 6], [7, 8]]
+	>>> matrix_divided(m2, 98)
+	Traceback (most recent call last):
+			...
+	TypeError: Each row of the matrix must have the same size
+
+	>>> m3 = [[1, 2, 3], [4, 5, 6], [7, 8, 9, 10]]
+	>>> matrix_divided(m2, 98)
+	Traceback (most recent call last):
+			...
+	TypeError: Each row of the matrix must have the same size
+
+Check if matrix contains a non-list:
+	>>> m4 = [[1, 2, 3], [4, 5, 6], (7, 8, 9)]
+	>>> matrix_divided(m4, 98)
+	Traceback (most recent call last):
+			...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+	>>> m5 = [[1, 2, 3], [4, 5, 6], "not a list"]
+	>>> matrix_divided(m5, 98)
+	Traceback (most recent call last):
+			...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+	
+	>>> matrix_divided([1, 2], 98)
+	Traceback (most recent call last):
+			...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+	
+	>>> matrix_divided(None, 98)
+	Traceback (most recent call last):
+			...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
