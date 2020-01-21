@@ -1,11 +1,3 @@
-The '1-my_list' module
-============================
-
-Using ''print_sorted''
-----------------------------
-
-Import the module:
-
 	>>> MyList = __import__('1-my_list').MyList
 
 	>>> my_list = MyList()
@@ -17,7 +9,6 @@ Import the module:
 	>>> my_list.print_sorted()
 	[-1, 2, 3, 4, 5]
 
-Test for duplicates.
 	>>> my_list2 = MyList()
 	>>> my_list2.append(1)
 	>>> my_list2.append(-44)
