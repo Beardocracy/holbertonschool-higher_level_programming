@@ -1,11 +1,9 @@
 #!/usr/bin/python3
+"""This module contains a class that inherits everything from 'list' and adds a
+function that prints a sorted list."""
 
 
 class MyList(list):
     def print_sorted(self):
-        '''
-        Prints a list of integers in order
-        '''
-        o_list = self[:]
-        o_list.sort()
-        print(o_list)
+        '''Prints a list in ascending order'''
+        print(sorted(self))
