@@ -7,5 +7,6 @@ class MyList(list):
         '''
         Prints a list of integers in order
         '''
-        sorted_list = list(set(self))
-        print(sorted_list)
+        o_list = self[:]
+        o_list.sort()
+        print(o_list)
