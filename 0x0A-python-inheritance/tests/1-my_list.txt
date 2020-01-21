@@ -31,3 +31,7 @@ Test for duplicates.
 	>>> my_list2.print_sorted()
 	[1, 2, 2, 4, 5]
 
+	>>> my_list3 = MyList()
+	>>> my_list3.print_sorted()
+	[]
+
