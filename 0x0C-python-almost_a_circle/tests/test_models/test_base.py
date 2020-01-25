@@ -7,7 +7,7 @@ class TestBase(unittest.TestCase):
     
     def setUp(self):
         ''' Resets the class variable'''
-        Base._Base__nb_object = 0
+        Base._Base__nb_objects = 0
 
     def test_initialization(self):
         new = Base()
