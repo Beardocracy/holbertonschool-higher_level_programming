@@ -34,3 +34,21 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r2.x, 0)
         self.assertEqual(r2.y, 0)
 
+    def test_input_validation(self):
+        with self.assertRaisesRegex(TypeError, 'width must be an integer'):
+            r1 = Rectangle('hi', 5)
+        with self.assertRaisesRegex(TypeError, 'height must be an integer'):
+            r2 = Rectangle(5, 'hi')
+        with self.assertRaisesRegex(TypeError, 'x must be an integer'):
+            r3 = Rectangle(5, 5, 'hi', 5)
+        with self.assertRaisesRegex(TypeError, 'y must be an integer'):
+            r4 = Rectangle(5, 5, 0, 'hi')
+        with self.assertRaisesRegex(ValueError, 'width must be > 0'):
+            r5 = Rectangle(-5, 5)
+        with self.assertRaisesRegex(ValueError, 'height must be > 0'):
+            r6 = Rectangle(5, -5)
+        with self.assertRaisesRegex(ValueError, 'x must be >= 0'):
+            r7 = Rectangle(5, 5, -1, 5)
+        with self.assertRaisesRegex(ValueError, 'y must be >= 0'):
+            r8 = Rectangle(5, 5, 5, -5)
+
