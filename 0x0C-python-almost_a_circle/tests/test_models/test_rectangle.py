@@ -1,20 +1,22 @@
 #!/usr/bin/python3
-
+''' This module tests the rectangle class '''
 import unittest
 from models.rectangle import Rectangle
 from models.base import Base
 
 class TestRectangle(unittest.TestCase):
-    
+    ''' This is a unittest for class rectangle '''
     def setUp(self):
         ''' Resets the class variable'''
         Base._Base__nb_objects = 0
     
     def test_type(self):
+        ''' Tests if type is correct '''
         a = Rectangle(5, 5)
         self.assertEqual(type(a), Rectangle)
 
     def test_id_assignment(self):
+        ''' Tests if id assignment works '''
         r1 = Rectangle(10, 5)
         self.assertEqual(r1.id, 1)
         r2 = Rectangle(10, 5, 0, 0, 98)
@@ -23,6 +25,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r3.id, 2)
 
     def test_hwxy_assignment(self):
+        ''' tests to see if variable assignment works '''
         r1 = Rectangle(10, 5, 3, 4)
         self.assertEqual(r1.width, 10)
         self.assertEqual(r1.height, 5)
@@ -35,6 +38,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r2.y, 0)
 
     def test_input_validation(self):
+        ''' tests for input validation exceptions and messages'''
         with self.assertRaisesRegex(TypeError, 'width must be an integer'):
             r1 = Rectangle('hi', 5)
         with self.assertRaisesRegex(TypeError, 'height must be an integer'):
@@ -51,4 +55,11 @@ class TestRectangle(unittest.TestCase):
             r7 = Rectangle(5, 5, -1, 5)
         with self.assertRaisesRegex(ValueError, 'y must be >= 0'):
             r8 = Rectangle(5, 5, 5, -5)
+
+    def test_area(self):
+        ''' Tests for correct output of area method '''
+        r1 = Rectangle(10, 5)
+        self.assertEqual(r1.area(), 50)
+        r2 = Rectangle(5, 5, 1, 1)
+        self.assertEqual(r2.area(), 25)
 
