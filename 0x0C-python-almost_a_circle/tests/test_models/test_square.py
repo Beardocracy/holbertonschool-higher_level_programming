@@ -66,3 +66,16 @@ class Test_square(unittest.TestCase):
         self.assertEqual(s1.x, 3)
         self.assertEqual(s1.y, 4)
 
+    def test_dictionary(self):
+        ''' Tests the dictionary method and using it with update method '''
+        s1 = Square(10, 2, 1)
+        s1_dict = s1.to_dictionary()
+        control_dict = {'x': 2, 'y': 1, 'id': 1, 'size': 10}
+        self.assertEqual(s1_dict, control_dict)
+        self.assertEqual(type(s1_dict),  dict)
+        s2 = Square(1, 1)
+        s2_dict = s2.to_dictionary()
+        self.assertEqual(str(s2), '[Square] (2) 1/0 - 1')
+        s2.update(**s1_dict)
+        self.assertEqual(str(s2), '[Square] (1) 2/1 - 10')
+
