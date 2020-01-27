@@ -37,6 +37,15 @@ class Base:
             f.write(json_list)
 
     def from_json_string(json_string):
+        ''' Returns the list of the json string representation json_string '''
         if json_string is None or json_string == "":
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        if dictionary is None:
+            return None
+        new = cls(2, 2)
+        new.update(**dictionary)
+        return new
