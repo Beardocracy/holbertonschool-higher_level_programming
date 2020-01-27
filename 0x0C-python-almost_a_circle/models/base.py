@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 ''' This module contains the class Base '''
+import json
+
 
 class Base:
     ''' This is the definition for the base object '''
@@ -12,3 +14,11 @@ class Base:
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    def to_json_string(list_dictionaries):
+        ''' Converts dictionary object to json '''
+        if list_dictionaries is None:
+            return "[]"
+        if not bool(list_dictionaries):
+            return "[]"
+        return json.dumps(list_dictionaries)
