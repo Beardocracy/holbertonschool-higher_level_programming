@@ -37,6 +37,7 @@ class Base:
         with open(filename, "w") as f:
             f.write(json_list)
 
+    @staticmethod
     def from_json_string(json_string):
         ''' Returns the list of the json string representation json_string '''
         if json_string is None or json_string == "":
