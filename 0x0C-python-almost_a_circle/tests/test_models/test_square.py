@@ -19,7 +19,7 @@ class Test_square(unittest.TestCase):
         self.assertEqual(type(a), Square)
         b = Square(5, 1, 1)
         self.assertEqual(type(b), Square)
-    
+
     def test_str(self):
         ''' Tests the __str__ method override '''
         r1 = Square(5, 2, 1, 12)
@@ -78,4 +78,3 @@ class Test_square(unittest.TestCase):
         self.assertEqual(str(s2), '[Square] (2) 1/0 - 1')
         s2.update(**s1_dict)
         self.assertEqual(str(s2), '[Square] (1) 2/1 - 10')
-

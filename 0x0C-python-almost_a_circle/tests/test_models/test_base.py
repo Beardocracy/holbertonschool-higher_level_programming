@@ -2,12 +2,13 @@
 ''' Module for testing the Base class'''
 import unittest
 import json
+import os
 from models.base import Base
 from models.rectangle import Rectangle
 
 
 class TestBase(unittest.TestCase):
-    
+
     def setUp(self):
         ''' Resets the class variable'''
         Base._Base__nb_objects = 0
@@ -48,7 +49,7 @@ class TestBase(unittest.TestCase):
     def test_from_json(self):
         ''' Tests the from_json_string method '''
         list_input = [
-            {'id': 89, 'width': 10, 'height': 4}, 
+            {'id': 89, 'width': 10, 'height': 4},
             {'id': 7, 'width': 1, 'height': 7}
         ]
         json_list_input = Rectangle.to_json_string(list_input)
@@ -69,4 +70,16 @@ class TestBase(unittest.TestCase):
 
     def test_load_from_file(self):
         ''' Tests the load from file method '''
-
+        try:
+            os.remove('Rectangle.json')
+        except:
+            pass
+        self.assertEqual([], Rectangle.load_from_file())
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+        for i in range(2):
+            self.assertEqual(str(list_rectangles_input[i]),
+                             str(list_rectangles_output[i]))

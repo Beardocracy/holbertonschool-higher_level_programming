@@ -176,5 +176,3 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(r2), '[Rectangle] (2) 0/0 - 1/1')
         r2.update(**r1_dict)
         self.assertEqual(str(r2), '[Rectangle] (1) 1/9 - 10/2')
-
-
