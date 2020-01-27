@@ -57,3 +57,12 @@ class TestBase(unittest.TestCase):
         self.assertEqual(type(json_list_input), str)
         self.assertEqual(type(list_output), list)
         self.assertEqual(list_output, list_input)
+
+    def test_create(self):
+        ''' Tests the create method '''
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        self.assertEqual(str(r1), str(r2))
+        self.assertNotEqual(r1, r2)
+        self.assertFalse(r1 is r2)
