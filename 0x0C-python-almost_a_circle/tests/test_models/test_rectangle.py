@@ -16,6 +16,8 @@ class TestRectangle(unittest.TestCase):
         ''' Tests if type is correct '''
         a = Rectangle(5, 5)
         self.assertEqual(type(a), Rectangle)
+        self.assertTrue(isinstance(a, Base))
+        self.assertTrue(issubclass(Rectangle, Base))
 
     def test_id_assignment(self):
         ''' Tests if id assignment works '''
