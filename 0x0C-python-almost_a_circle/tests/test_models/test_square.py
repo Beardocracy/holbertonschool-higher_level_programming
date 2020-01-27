@@ -39,4 +39,30 @@ class Test_square(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'width must be > 0'):
             s1.size = -89
 
+    def test_update(self):
+        ''' Tests the update method '''
+        s1 = Square(10, 10, 10)
+        self.assertEqual(s1.id, 1)
+        self.assertEqual(s1.size, 10)
+        self.assertEqual(s1.x, 10)
+        self.assertEqual(s1.y, 10)
+        s1.update(89)
+        self.assertEqual(s1.id, 89)
+        s1.update(89, 2, size=5)
+        self.assertEqual(s1.id, 89)
+        self.assertEqual(s1.size, 2)
+        s1.update(89, 2, 3)
+        self.assertEqual(s1.id, 89)
+        self.assertEqual(s1.size, 2)
+        self.assertEqual(s1.x, 3)
+        s1.update(89, 2, 3, 4, id=98)
+        self.assertEqual(s1.id, 89)
+        self.assertEqual(s1.size, 2)
+        self.assertEqual(s1.x, 3)
+        self.assertEqual(s1.y, 4)
+        s1.update(size=1)
+        self.assertEqual(s1.id, 89)
+        self.assertEqual(s1.size, 1)
+        self.assertEqual(s1.x, 3)
+        self.assertEqual(s1.y, 4)
 
