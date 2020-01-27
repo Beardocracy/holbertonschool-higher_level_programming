@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 ''' This module tests the rectangle class '''
 import unittest
+import sys
 from models.rectangle import Rectangle
 from models.base import Base
 
@@ -62,4 +63,38 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.area(), 50)
         r2 = Rectangle(5, 5, 1, 1)
         self.assertEqual(r2.area(), 25)
+
+    def test_display(self):
+        ''' Tests for correct output of display method '''
+        r1 = Rectangle(3, 2)
+        r2 = Rectangle(2, 4)
+        orig_stdout = sys.stdout
+        with open('test_rectangle.txt', 'w') as f:
+            sys.stdout = f
+            r1.display()
+        with open('test_rectangle.txt', 'r') as f:
+            self.assertEqual(f.read(), '###\n###\n')
+        with open('test_rectangle.txt', 'w') as f:
+            sys.stdout = f
+            r2.display()
+        with open('test_rectangle.txt', 'r') as f:
+            self.assertEqual(f.read(), '##\n##\n##\n##\n')
+        sys.stdout = orig_stdout
+
+    def test_str(self):
+        ''' Tests the __str__ method override '''
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        r2 = Rectangle(5, 5, 1)
+        orig_stdout = sys.stdout
+        with open('test_rectangle.txt', 'w') as f:
+            sys.stdout = f
+            print(r1)
+        with open('test_rectangle.txt', 'r') as f:
+            self.assertEqual(f.read(), '[Rectangle] (12) 2/1 - 4/6\n')
+        with open('test_rectangle.txt', 'w') as f:
+            sys.stdout = f
+            print(r2)
+        with open('test_rectangle.txt', 'r') as f:
+            self.assertEqual(f.read(), '[Rectangle] (1) 1/0 - 5/5\n')
+        sys.stdout = orig_stdout
 
