@@ -19,7 +19,7 @@ class Base:
         ''' Converts dictionary object to json '''
         if list_dictionaries is None:
             return "[]"
-        if not bool(list_dictionaries):
+        if len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
 
