@@ -32,7 +32,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(type(dictionary), dict)
         self.assertEqual(type(json_dictionary), str)
         self.assertEqual(Base.to_json_string(None), "[]")
-        empty = {}
+        empty = []
         self.assertEqual(Base.to_json_string(empty), "[]")
 
     def test_save_to_file(self):
