@@ -66,3 +66,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(str(r1), str(r2))
         self.assertNotEqual(r1, r2)
         self.assertFalse(r1 is r2)
+
+    def test_load_from_file(self):
+        ''' Tests the load from file method '''
+

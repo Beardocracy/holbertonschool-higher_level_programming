@@ -44,8 +44,22 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        if dictionary is None:
-            return None
+        ''' Creates an instance from a dictionary '''
         new = cls(2, 2)
         new.update(**dictionary)
         return new
+
+    @classmethod
+    def load_from_file(cls):
+        ''' Returns a list of instances from file '''
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as f:
+                json_string = f.read()
+        except:
+            return []
+        list_dicts = cls.from_json_string(json_string)
+        list_objs = []
+        for each in list_dicts:
+            list_objs.append(cls.create(**each))
+        return list_objs
