@@ -5,12 +5,13 @@ import sys
 from models.rectangle import Rectangle
 from models.base import Base
 
+
 class TestRectangle(unittest.TestCase):
     ''' This is a unittest for class rectangle '''
     def setUp(self):
         ''' Resets the class variable'''
         Base._Base__nb_objects = 0
-    
+
     def test_type(self):
         ''' Tests if type is correct '''
         a = Rectangle(5, 5)
@@ -162,4 +163,3 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.height, 2)
         self.assertEqual(r1.x, 1)
         self.assertEqual(r1.y, 3)
-
