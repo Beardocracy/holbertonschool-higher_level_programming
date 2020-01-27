@@ -68,6 +68,8 @@ class TestRectangle(unittest.TestCase):
         ''' Tests for correct output of display method '''
         r1 = Rectangle(3, 2)
         r2 = Rectangle(2, 4)
+        r3 = Rectangle(2, 3, 2, 2)
+        r4 = Rectangle(3, 2, 1, 0)
         orig_stdout = sys.stdout
         with open('test_rectangle.txt', 'w') as f:
             sys.stdout = f
@@ -79,6 +81,16 @@ class TestRectangle(unittest.TestCase):
             r2.display()
         with open('test_rectangle.txt', 'r') as f:
             self.assertEqual(f.read(), '##\n##\n##\n##\n')
+        with open('test_rectangle.txt', 'w') as f:
+            sys.stdout = f
+            r3.display()
+        with open('test_rectangle.txt', 'r') as f:
+            self.assertEqual(f.read(), '\n\n  ##\n  ##\n  ##\n')
+        with open('test_rectangle.txt', 'w') as f:
+            sys.stdout = f
+            r4.display()
+        with open('test_rectangle.txt', 'r') as f:
+            self.assertEqual(f.read(), ' ###\n ###\n')
         sys.stdout = orig_stdout
 
     def test_str(self):
