@@ -2,6 +2,7 @@
 ''' This module contains the class rectangle '''
 from models.base import Base
 
+
 class Rectangle(Base):
     ''' This is the class rectangle which inherits from Base '''
 
@@ -40,7 +41,7 @@ class Rectangle(Base):
         elif height <= 0:
             raise ValueError('height must be > 0')
         self.__height = height
-    
+
     @property
     def x(self):
         ''' Gets the x '''
@@ -54,7 +55,7 @@ class Rectangle(Base):
         elif x < 0:
             raise ValueError('x must be >= 0')
         self.__x = x
-    
+
     @property
     def y(self):
         ''' Gets the y '''
@@ -62,7 +63,7 @@ class Rectangle(Base):
 
     @y.setter
     def y(self, y):
-        ''' Sets the y with validation '''    
+        ''' Sets the y with validation '''
         if type(y) is not int:
             raise TypeError('y must be an integer')
         elif y < 0:
@@ -72,3 +73,17 @@ class Rectangle(Base):
     def area(self):
         ''' Returns the area of the rectangle '''
         return self.width * self.height
+
+    def display(self):
+        ''' Prints in stdout the instance with char # '''
+        rows = self.width
+        cols = self.height
+        for c in range(cols):
+            for r in range(rows):
+                print('#', end='')
+            print()
+
+    def __str__(self):
+        ''' Overrides the str method '''
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
+                                                       self.width, self.height)
