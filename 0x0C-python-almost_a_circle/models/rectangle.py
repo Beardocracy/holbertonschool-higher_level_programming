@@ -92,7 +92,7 @@ class Rectangle(Base):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
                                                        self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         ''' Updates an existing instance '''
         num_args = len(args)
         if num_args >= 1:
@@ -105,3 +105,12 @@ class Rectangle(Base):
             self.x = args[3]
         if num_args >= 5:
             self.y = args[4]
+        if num_args == 0:
+            if 'height' in kwargs:
+                self.height = kwargs['height']
+            if 'width' in kwargs:
+                self.width = kwargs['width']
+            if 'x' in kwargs:
+                self.x = kwargs['x']
+            if 'y' in kwargs:
+                self.y = kwargs['y']
