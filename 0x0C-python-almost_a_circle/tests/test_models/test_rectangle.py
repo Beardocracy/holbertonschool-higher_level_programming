@@ -163,3 +163,18 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.height, 2)
         self.assertEqual(r1.x, 1)
         self.assertEqual(r1.y, 3)
+
+    def test_dictionary(self):
+        ''' Tests the dictionary method and using it with update method '''
+        r1 = Rectangle(10, 2, 1, 9)
+        r1_dict = r1.to_dictionary()
+        control_dict = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(r1_dict, control_dict)
+        self.assertEqual(type(r1_dict),  dict)
+        r2 = Rectangle(1, 1)
+        r2_dict = r2.to_dictionary()
+        self.assertEqual(str(r2), '[Rectangle] (2) 0/0 - 1/1')
+        r2.update(**r1_dict)
+        self.assertEqual(str(r2), '[Rectangle] (1) 1/9 - 10/2')
+
+
