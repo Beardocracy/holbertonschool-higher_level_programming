@@ -1,4 +1,4 @@
--- Lists all the genres of Dexter
+-- Lists all the Comedies
 SELECT tv_shows.title
 FROM tv_shows
 INNER JOIN tv_show_genres
