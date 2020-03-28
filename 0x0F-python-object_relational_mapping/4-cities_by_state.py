@@ -12,7 +12,7 @@ def show_states():
         cur.execute("SELECT cities.id, cities.name, states.name " +
                     "FROM states LEFT JOIN cities " +
                     "ON cities.state_id = states.id " +
-                    "ORDER BY cities.id;")
+                    "ORDER BY cities.id ASC;")
         query_rows = cur.fetchall()
         for row in query_rows:
             print(row)
