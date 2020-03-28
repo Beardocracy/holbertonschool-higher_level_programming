@@ -10,7 +10,8 @@ def show_states():
     cur = db.cursor()
     cur.execute("SELECT cities.id, cities.name, states.name " +
                 "FROM states LEFT JOIN cities " +
-                "ON states.id = cities.state_id;")
+                "ON cities.state_id = states.id " +
+                "ORDER BY cities.id;")
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
