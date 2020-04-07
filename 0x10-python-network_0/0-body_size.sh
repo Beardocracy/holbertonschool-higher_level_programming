@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Takes in a URL, sends a request, displays size of the body
 
 if [[ $# -lt 1 ]]; then
