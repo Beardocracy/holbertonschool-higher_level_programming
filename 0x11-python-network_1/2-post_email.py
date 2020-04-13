@@ -6,9 +6,12 @@ import urllib.request
 import urllib.parse
 
 if __name__ == "__main__":
-    data = {
+    values = {
         'email' : sys.argv[2]
     }
-    with urllib.request.urlopen(sys.argv[1], data) as response:
+    data = urllib.parse.urlencode(values)
+    data = data.encode('ascii')
+    req = urllib.request.Request(sys.argv[1], data)
+    with urllib.request.urlopen(req) as response:
         content = response.read()
-        print(content)
+        print(content.decode('utf-8'))
