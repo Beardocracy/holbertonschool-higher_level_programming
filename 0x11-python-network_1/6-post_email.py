@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Takes a URL, displays the value of a variable
+# Takes a URL and email address, send a POST request with the passed email
 
 import requests
 import sys
