@@ -19,5 +19,5 @@ if __name__ == "__main__":
     for k in sorted(com_dict.keys(), reverse=True):
         if i < 10:
             print("{}: {}".format(com_dict.get(k).get('sha'),
-                                 com_dict.get(k).get('name')))
+                                  com_dict.get(k).get('name')))
         i += 1
