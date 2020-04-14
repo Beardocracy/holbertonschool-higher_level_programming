@@ -18,6 +18,6 @@ if __name__ == "__main__":
     i = 0
     for k in sorted(com_dict.keys(), reverse=True):
         if i < 10:
-            print("{} {}".format(com_dict.get(k).get('sha'),
+            print("{}: {}".format(com_dict.get(k).get('sha'),
                                  com_dict.get(k).get('name')))
         i += 1
