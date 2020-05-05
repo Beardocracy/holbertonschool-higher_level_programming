@@ -2,11 +2,15 @@
 /*
  * This script prints a factorial
  */
-const arg1 = Number(process.argv[2]);
-const arg2 = Number(process.argv[3]);
-const facto = arg1 ** arg2;
-if (isNaN(facto)) {
+const arg = Number(process.argv[2]);
+function factorial (num) {
+  if (num === 0) {
+    return 1;
+  }
+  return num * factorial(num - 1);
+}
+if (isNaN(arg)) {
   console.log('1');
 } else {
-  console.log(facto);
+  console.log(factorial(arg));
 }
