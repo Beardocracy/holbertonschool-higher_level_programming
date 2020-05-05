@@ -22,4 +22,6 @@ for (let i = 4; i < numArgs; i++) {
     big2 = Number(process.argv[i]);
   }
 }
-console.log(big2);
+if (numArgs >= 4) {
+  console.log(big2);
+}
