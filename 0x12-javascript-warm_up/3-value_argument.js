@@ -2,8 +2,7 @@
 /*
  * This script prints a message
  */
-const args = process.argv.length;
-if (args < 3) {
+if (!process.argv[2]) {
   console.log('No argument');
 } else {
   console.log(process.argv[2]);
