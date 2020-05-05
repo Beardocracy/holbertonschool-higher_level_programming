@@ -2,10 +2,11 @@
 /*
  * This script prints a few messages
  */
-if (!process.argv[2]) {
+const arg = Number(process.argv[2]);
+if (isNaN(arg)) {
   console.log('Missing number of occurrences');
 } else {
-  for (let i = 0; i < process.argv[2]; i++) {
+  for (let i = 0; i < Number(process.argv[2]); i++) {
     console.log('C is cool');
   }
 }
