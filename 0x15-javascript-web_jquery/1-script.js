@@ -1,2 +1,2 @@
-const element = $("HEADER")
-element.css("color","#FF0000")
+const element = $('HEADER');
+element.css('color', '#FF0000');
